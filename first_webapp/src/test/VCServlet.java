@@ -1,6 +1,8 @@
 package test;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HelloServlet
+ * Servlet implementation class VCServlet
  */
-@WebServlet("/HelloServlet")
-public class HelloServlet extends HttpServlet {
+@WebServlet("/VCServlet")
+public class VCServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public VCServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,19 +27,12 @@ public class HelloServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
-        var out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>はじめてのサーブレット</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("こんにちは、サーブレットの世界へ！！");
-        out.println("</body>");
-        out.println("</html>");
-    }
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view.jsp");
+    rd.forward(request, response);
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
